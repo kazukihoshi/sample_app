@@ -49,3 +49,45 @@ describe '一覧画面のテスト' do
   end
 end
 
+describe '詳細画面のテスト' do
+  before do
+    '詳細画面への遷移'
+  end
+  context '表示の確認' do
+    it '削除リンクが存在しているか' do
+      expect(page).to have_content 'list'
+    end
+    it '編集リンクが存在しているか' do
+      expect(page).to have_content 'edit/list'
+    end
+  end
+  context 'リンクの遷移先の確認' do
+    it '編集の遷移先は編集画面か' do
+      expect(page)
+    end
+    it 'list削除のテスト' do
+      expect { list.destroy }.to change{ List.count }.by(-1)
+    end
+  end
+end
+
+describe '編集画面のテスト' do
+  before do
+    '編集画面への遷移' 
+  end
+  context '表示の確認' do
+    it '編集前のタイトルと本文がフォームに表示(セット)されている' do
+      expect(page).to have_field 'list[title]', with: list.title
+      expect(page).to have_field 'list[body]', with: list.body
+    end
+    it '保存ボタンが表示される' do
+      expect(page).to have_button '保存'
+    end
+  end
+  context '更新処理に関するテスト' do
+    it '更新後のリダイレクト先は正しいか' do
+      expect(page).to have_current_path list_path(list)
+    end
+  end
+end
+      
