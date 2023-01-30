@@ -20,5 +20,21 @@ describe '投稿のテスト' do
 end
 
 describe '投稿画面のテスト' do
-  
+  before do
+    '投稿画面への遷移'
+  end
+  context '表示の確認' do 
+    it 'new_list_pathが"/lists/new"であるか' do
+      expect(current_path).to eq('/lists/new')
+    end
+    it '投稿ボタンが表示されているか' do
+      expect(page).to have_button '投稿'
+    end
+  end
+  context '投稿処理のテスト' do
+    it '投稿後のリダイレクト先は正しいか' do
+      expect(page).to have_current_path list_path(list)
+    end
+  end
 end
+
