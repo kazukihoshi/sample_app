@@ -38,3 +38,14 @@ describe '投稿画面のテスト' do
   end
 end
 
+describe '一覧画面のテスト' do
+  before do
+    '一覧画面への遷移'
+  end
+  context '一覧の表示とリンクの確認' do
+    it '一覧表示画面に投稿されたものが表示されているか' do
+      expect(page).to have_content 'list'
+    end
+  end
+end
+
