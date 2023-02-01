@@ -20,7 +20,7 @@ describe '投稿のテスト' do
     
     describe '投稿画面(new_list_path)のテスト' do
       before do
-        view new_list_path
+        visit new_list_path
       end
       context '表示の確認' do 
         it 'new_list_pathが"/lists/new"であるか' do
